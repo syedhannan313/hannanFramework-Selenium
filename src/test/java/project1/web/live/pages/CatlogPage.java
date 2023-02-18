@@ -6,19 +6,28 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CatlogPage extends AbstractClass{
+import java.util.List;
+
+public class CatlogPage extends AbstractComponents{
     WebDriver driver;
+
     public CatlogPage(WebDriver driver){
+        super(driver);
         this.driver=driver;
-        PageFactory.initElements(,this);
-//        super.driver;"?"
-    }
-
-    @FindBy(id="//b[text()='zara coat 3']/../..//button[text()=' Add To Cart']")
-    WebElement requiredProduct;
-    public  void addtocart()  {
-
-        requiredProduct.click();
+        PageFactory.initElements(driver,this);
 
     }
+
+
+    @FindBy(css="b")
+    List<WebElement> requiredProducts;
+    public  void addtocart(String dynamicValue)  {
+
+        WebElement requiredProduct  = requiredProducts.stream().filter(prod->prod.getText().equalsIgnoreCase(dynamicValue)).findFirst().orElse(null);
+        requiredProduct.findElement(By.xpath(""));
+
+    }
+
+
+
 }

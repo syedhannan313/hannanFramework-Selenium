@@ -24,13 +24,6 @@ public class LandingPage {
     @FindBy(id="login")
     WebElement btnlogin;
     public  void login(String username,String passwoed) throws InterruptedException {
-//
-//        driver.findElement(By.id("userEmail")).sendKeys("syedhannan@gmail.com");
-//        driver.findElement(By.id("userPassword")).sendKeys("syeD@313");
-//        Thread.sleep(1000);
-//        driver.findElement(By.id("login")).click();
-//        Thread.sleep(1000);
-
 
         inputuserEmail.sendKeys(username);
         inputuserPassword.sendKeys(passwoed);

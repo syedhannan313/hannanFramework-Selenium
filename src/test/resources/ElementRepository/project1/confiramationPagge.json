@@ -1,0 +1,18 @@
+{
+  "PageName": "landingPage",
+  "author": "Syedhannan",
+  "Elements": {
+    "inputUsername": {
+      "web": "id=userEmail",
+      "action": "click,verifyDisplayed,enterText"
+    },
+    "inputPassword": {
+      "web": "id=userPassword",
+      "action": "click,verifyDisplayed,enterText"
+    },
+    "btnLogin": {
+      "web": "id=login",
+      "action": "click,verifyDisplayed"
+    }
+  }
+}

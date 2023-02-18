@@ -6,10 +6,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+import project1.web.live.pages.*;
 
 import java.time.Duration;
 
-public class BasicTestE2E  {
+public class BasicTestE2E1   {
 
     @Test
     public static void basicTestTC() throws InterruptedException {
@@ -22,13 +23,17 @@ public class BasicTestE2E  {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         String product = "zara coat 3";
         try {
-            driver.findElement(By.id("userEmail")).sendKeys("syedhannan@gmail.com");
-            driver.findElement(By.id("userPassword")).sendKeys("syeD@313");
-            Thread.sleep(1000);
-            driver.findElement(By.id("login")).click();
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//b[text()='"+product+"']/../..//button[text()=' Add To Cart']")).click();
+            LandingPage landingPage=new LandingPage(driver);
+            CheckOutPage checkOutPage=new CheckOutPage(driver);
+            ConfirmationPage confirmationPage=new ConfirmationPage(driver);
+            CatlogPage catlogPage=new CatlogPage(driver);
+            AbstractComponents abstractComponents=new AbstractComponents(driver);
 
+
+            landingPage.login("syedhannan@gmail.com","syeD@313");
+
+            Thread.sleep(1000);
+            catlogPage.addtocart(product);
 //            List<WebElement> products = driver.findElements(By.xpath("//*[@class='card-body']/h5/b"));
 //            WebElement prod = products.stream().filter(item -> item.getText().equalsIgnoreCase(product)).findFirst().orElse(null);
 
@@ -48,7 +53,7 @@ public class BasicTestE2E  {
             Thread.sleep(5000);
 
             WebElement ele = driver.findElement(By.xpath("//a[text()='Place Order ']"));
-                   wait.until(ExpectedConditions.elementToBeClickable(ele));
+            wait.until(ExpectedConditions.elementToBeClickable(ele));
             ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", ele);
 //            Actions act = new Actions(driver);
 //            act.click().perform();
